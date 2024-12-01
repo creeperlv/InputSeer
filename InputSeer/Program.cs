@@ -20,6 +20,7 @@ class Program
 		{
 			GamepadButtonsPerPad[i] = new List<GamepadButton>();
 		}
+		string str = "";
 		while (true)
 		{
 			Raylib.BeginDrawing();
@@ -65,6 +66,28 @@ class Program
 				}
 				{
 					Raylib.DrawText($"Mouse:{Raylib.GetMouseX()},{Raylib.GetMouseY()}", X, HOffset, DY, Color.White);
+					HOffset += DY + PH;
+				}
+			}
+			{
+				int HOffset = 10;
+				int X = 300;
+				while (true)
+				{
+
+					var _char = Raylib.GetCharPressed();
+					if (_char == 0)
+					{
+						break;
+					}
+					str+=(char)_char;
+				}
+				if (Raylib.IsKeyPressed(KeyboardKey.Escape))
+				{
+					str="";
+				}
+				{
+					Raylib.DrawText(str, X, HOffset, DY, Color.White);
 					HOffset += DY + PH;
 				}
 			}
